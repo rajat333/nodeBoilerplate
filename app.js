@@ -5,6 +5,8 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var middleware1 = require('./middleware/test');
 
+var envConfig = require('./configrations/environmentConfig').getEnvData();
+console.log('>>>envConfig>>>>',envConfig);
 // Include Models
 var User = require('./model/user');
 
@@ -20,9 +22,11 @@ var app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
 
-
+// Middleware SetUp
 app.use(logger('dev'));
+
 app.use(middleware1.logger);
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
