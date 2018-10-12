@@ -5,9 +5,15 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var middleware1 = require('./middleware/test');
 
+// Include Models
+var User = require('./model/user');
+
+// include Routers
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
+//db connection
+var dbConnection = require('./db-connectivity/dbConnection').dbConnection();
 var app = express();
 
 // view engine setup
